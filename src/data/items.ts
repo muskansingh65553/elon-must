@@ -1,4 +1,3 @@
-
 const items = [
   {
     id: "tesla-model-s",
