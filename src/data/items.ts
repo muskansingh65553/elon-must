@@ -153,11 +153,11 @@ const items = [
   },
   {
     id: "helicopter",
-    name: "Personal Helicopter",
-    price: 5000000,
-    image: "https://images.unsplash.com/photo-1543269866-487350d6fa5e?q=80&w=500",
+    name: "Sikorsky S-92 Executive",
+    price: 32000000,
+    image: "/img/helicopter.png",
     category: "vehicles",
-    description: "A private helicopter for convenient aerial transportation."
+    description: "A Sikorsky S-92 Executive Helicopter for convenient aerial transportation."
   }
 ];
 

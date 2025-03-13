@@ -1,7 +1,5 @@
-
 import { useRef, useState } from "react";
 import { useSpending } from "@/contexts/SpendingContext";
-import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { Share2, Download, Copy, Check } from "lucide-react";
@@ -19,7 +17,6 @@ import html2canvas from "html2canvas";
 
 export function ShareSpending() {
   const { purchases, spent, remaining, customBudget } = useSpending();
-  const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const shareRef = useRef<HTMLDivElement>(null);
@@ -32,7 +29,7 @@ export function ShareSpending() {
     try {
       const canvas = await html2canvas(shareRef.current, {
         scale: 2,
-        backgroundColor: theme === 'dark' ? '#1A1F2C' : '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         logging: false
       });
       
