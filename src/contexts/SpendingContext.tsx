@@ -240,21 +240,17 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
     setPurchases([]);
     setSpent(0);
     setRemaining(customBudget || ELON_NET_WORTH);
-    toast.success("Shopping spree reset! All your money is back.");
+    setAchievementsList(achievements.map(a => ({ ...a, unlocked: false })));
+    setTransactionHistory([]);
+    setFunFacts([]);
     
-    // Add reset event to history
-    setTransactionHistory(prev => [{
-      item: { 
-        id: "reset", 
-        name: "RESET", 
-        price: 0, 
-        image: "", 
-        category: "system", 
-        description: "Reset all purchases" 
-      },
-      quantity: 0,
-      timestamp: new Date()
-    }, ...prev]);
+    // Clear localStorage
+    localStorage.removeItem("purchases");
+    localStorage.removeItem("achievements");
+    localStorage.removeItem("transactionHistory");
+    localStorage.removeItem("funFacts");
+    
+    toast.success("Everything has been reset! Start fresh with all your money back.");
   };
 
   const getPurchaseQuantity = (itemId: string) => {
@@ -318,3 +314,4 @@ export const useSpending = (): SpendingContextType => {
   }
   return context;
 };
+
