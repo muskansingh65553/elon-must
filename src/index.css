@@ -1,0 +1,134 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 230 73% 25%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 355 82% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 204 58% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 230 16% 14%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 16% 19%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 16% 19%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 355 82% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 25%;
+    --muted-foreground: 215 20.2% 75%;
+
+    --accent: 204 58% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 60.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 25%;
+    --input: 217.2 32.6% 25%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Responsive scrollbar utilities */
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.shiny-button {
+  @apply relative overflow-hidden;
+}
+
+.shiny-button::after {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300;
+  background-size: 200% 100%;
+}
+
+.shiny-button:hover::after {
+  @apply opacity-100 animate-shine;
+}
+
+/* Money counter animation */
+.money-counter .digit {
+  @apply inline-block overflow-hidden h-full;
+}
+
+.money-counter .digit-inner {
+  @apply transition-transform duration-500 flex flex-col;
+}
+
+.money-counter.animate .digit-inner {
+  @apply animate-count-up;
+}
+
+/* Improve dark mode card styling */
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark .border-slate-200 {
+  @apply border-gray-700;
+}
+
+/* Responsive fixes */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
