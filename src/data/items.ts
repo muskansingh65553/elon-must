@@ -4,7 +4,7 @@ const items = [
     id: "tesla-model-s",
     name: "Tesla Model S Plaid",
     price: 129990,
-    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=500",
+    image: "/img/tesla-model-s.jpg",
     category: "vehicles",
     description: "The quickest production car ever made, with 0-60 mph in 1.99 seconds."
   },
@@ -12,7 +12,7 @@ const items = [
     id: "mansion-beverly-hills",
     name: "Beverly Hills Mansion",
     price: 42000000,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=500",
+    image: "/img/beverly-hills-mansion.png",
     category: "real-estate",
     description: "Luxurious mansion in the heart of Beverly Hills with 8 bedrooms and 12 bathrooms."
   },
@@ -20,7 +20,7 @@ const items = [
     id: "super-yacht",
     name: "Luxury Super Yacht",
     price: 300000000,
-    image: "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=500",
+    image: "/img/super-yacht.png",
     category: "vehicles",
     description: "A 100-meter mega yacht with helipad, swimming pools, and lavish interiors."
   },
@@ -28,7 +28,7 @@ const items = [
     id: "private-jet",
     name: "Gulfstream G700",
     price: 75000000,
-    image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=500",
+    image: "/img/private-jet.png",
     category: "vehicles",
     description: "The most spacious private jet with the longest range in the industry."
   },

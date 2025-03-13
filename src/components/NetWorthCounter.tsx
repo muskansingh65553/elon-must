@@ -49,7 +49,7 @@ export function NetWorthCounter() {
     <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-xl shadow-lg bg-gradient-to-r from-blue-900 to-blue-600 dark:from-blue-950 dark:to-blue-800 text-white hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
       <div className="text-center">
         <h2 className="text-lg sm:text-xl font-medium mb-1 opacity-90">
-          {customBudget ? "Your Custom Budget" : "Elon Musk's Fortune"}
+          {customBudget ? "Your Custom Budget" : "Elon Musk's Total Money"}
         </h2>
         <div className={`money-counter text-4xl sm:text-5xl font-bold ${isAnimating ? 'animate scale-105 transition-transform' : ''}`}>
           {formatCurrency(remaining)}

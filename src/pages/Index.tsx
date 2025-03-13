@@ -19,7 +19,7 @@ const Index = () => {
       <header className="sticky top-0 z-10 bg-white dark:bg-gray-800 shadow-sm">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
           <h1 className="text-xl md:text-2xl font-bold text-blue-800 dark:text-blue-400 truncate">
-            SPEND ELON'S MONEY
+            SPEND ELON MUSK'S MONEY
           </h1>
           
           <div className="flex items-center gap-2 md:gap-3">
