@@ -26,6 +26,11 @@ export function ItemCard({ item }: ItemCardProps) {
           src={item.image} 
           alt={item.name}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+          onError={(e) => {
+            e.currentTarget.src = "/placeholder.svg";
+            e.currentTarget.onerror = null;
+          }}
+          loading="lazy"
         />
         <div className="absolute top-2 right-2">
           <TooltipProvider>

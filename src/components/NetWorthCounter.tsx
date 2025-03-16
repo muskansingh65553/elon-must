@@ -8,7 +8,7 @@ import useSound from "use-sound";
 export function NetWorthCounter() {
   const { remaining, spent, customBudget } = useSpending();
   const [isAnimating, setIsAnimating] = useState(false);
-  const totalBudget = customBudget || 244000000000; // Elon's net worth
+  const totalBudget = customBudget || 335250000000; // Elon's net worth
   const [playCashSound] = useSound('/sounds/cash.mp3', { volume: 0.5 });
   const [playMilestoneSound] = useSound('/sounds/achievement.mp3', { volume: 0.7 });
 
@@ -46,7 +46,7 @@ export function NetWorthCounter() {
   const spentPercentage = Math.min((spent / totalBudget) * 100, 100);
 
   return (
-    <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-xl shadow-lg bg-gradient-to-r from-blue-900 to-blue-600 dark:from-blue-950 dark:to-blue-800 text-white hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+    <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-xl shadow-lg bg-gradient-to-r from-blue-900 to-blue-600 text-white hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
       <div className="text-center">
         <h2 className="text-lg sm:text-xl font-medium mb-1 opacity-90">
           {customBudget ? "Your Custom Budget" : "Elon Musk's Total Money"}
@@ -59,7 +59,7 @@ export function NetWorthCounter() {
         </p>
       </div>
 
-      <div className="w-full bg-blue-200/30 dark:bg-blue-950/50 rounded-full h-3 overflow-hidden">
+      <div className="w-full bg-blue-200/30 rounded-full h-3 overflow-hidden">
         <div 
           className="h-full transition-all duration-1000 ease-out relative overflow-hidden"
           style={{

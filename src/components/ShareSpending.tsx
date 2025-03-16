@@ -52,7 +52,7 @@ export function ShareSpending() {
     try {
       const canvas = await html2canvas(shareRef.current, {
         scale: 2,
-        backgroundColor: theme === 'dark' ? '#1A1F2C' : '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         logging: false
       });
       
@@ -100,9 +100,7 @@ export function ShareSpending() {
         <div className="py-4">
           <div
             ref={shareRef}
-            className={`p-6 rounded-lg border shadow-sm ${
-              theme === 'dark' ? 'bg-elon-dark text-white' : 'bg-white text-elon-dark'
-            }`}
+            className="p-6 rounded-lg border shadow-sm bg-white text-elon-dark"
             style={{ width: "100%", maxWidth: "500px", margin: "0 auto" }}
           >
             <div className="text-center mb-6">

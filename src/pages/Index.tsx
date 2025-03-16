@@ -1,7 +1,6 @@
 import { NetWorthCounter } from "@/components/NetWorthCounter";
 import { ItemsGrid } from "@/components/ItemsGrid";
 import { CartSummary } from "@/components/CartSummary";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { TransactionHistory } from "@/components/TransactionHistory";
 import { AchievementsPanel } from "@/components/AchievementsPanel";
 import { CustomBudgetModal } from "@/components/CustomBudgetModal";
@@ -12,18 +11,21 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 
 const Index = () => {
+  console.log("[Index] Component mounting...");
   const { resetPurchases } = useSpending();
+  
+  // Log when spending context is accessed
+  console.log("[Index] Spending context accessed");
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-12">
-      <header className="sticky top-0 z-10 bg-white dark:bg-gray-800 shadow-sm">
+    <div className="min-h-screen bg-gray-50 pb-12">
+      <header className="sticky top-0 z-10 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
-          <h1 className="text-xl md:text-2xl font-bold text-blue-800 dark:text-blue-400 truncate">
+          <h1 className="text-xl md:text-2xl font-bold text-blue-800 truncate">
             SPEND ELON MUSK'S MONEY
           </h1>
           
           <div className="flex items-center gap-2 md:gap-3">
-            <ThemeToggle />
             <CartSummary />
           </div>
         </div>
@@ -31,7 +33,7 @@ const Index = () => {
       
       <main className="container mx-auto px-4">
         {/* Money Counter - Sticky positioning */}
-        <div className="sticky top-14 z-[5] -mx-4 px-4 py-4 bg-gray-50 dark:bg-gray-900">
+        <div className="sticky top-14 z-[5] -mx-4 px-4 py-4 bg-gray-50">
           <NetWorthCounter />
         </div>
         
@@ -60,8 +62,8 @@ const Index = () => {
         </div>
       </main>
       
-      <footer className="border-t py-6 mt-12 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4 text-center text-sm text-slate-500 dark:text-slate-400">
+      <footer className="border-t py-6 mt-12 bg-white">
+        <div className="container mx-auto px-4 text-center text-sm text-slate-500">
           <p>This is a simulation for entertainment purposes only.</p>
           <p className="mt-1">
             Created with ❤️ using React and Tailwind CSS

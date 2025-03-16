@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { achievements } from "@/data/achievements";
 
 // Elon Musk's net worth in dollars (using a reasonable estimate)
-const ELON_NET_WORTH = 244000000000;
+const ELON_NET_WORTH = 335250000000; // Elon's net worth in dollars
 
 export interface Item {
   id: string;
@@ -58,25 +58,34 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
   const [achievementsList, setAchievementsList] = useState<Achievement[]>(achievements);
   const [transactionHistory, setTransactionHistory] = useState<Purchase[]>([]);
   const [funFacts, setFunFacts] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Load items data from API or local storage
+  // Load items data
   useEffect(() => {
-    const fetchItems = async () => {
+    console.log("[SpendingContext] Initializing context...");
+    const loadItems = async () => {
       try {
-        // In a real app, we might fetch from an API
-        import('@/data/items').then(module => {
-          setItems(module.default);
-        });
+        setIsLoading(true);
+        console.log("[SpendingContext] Loading items data...");
+        const itemsModule = await import('@/data/items');
+        console.log("[SpendingContext] Items loaded:", itemsModule.default);
+        setItems(itemsModule.default);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Failed to load items:", error);
+        console.error("[SpendingContext] Failed to load items:", error);
+        setError("Failed to load items. Please try again later.");
+        setIsLoading(false);
       }
     };
 
-    fetchItems();
+    loadItems();
 
     // Load purchases from localStorage if available
+    console.log("[SpendingContext] Loading saved purchases...");
     const savedPurchases = localStorage.getItem("purchases");
     if (savedPurchases) {
+      console.log("[SpendingContext] Found saved purchases:", savedPurchases);
       const parsedPurchases = JSON.parse(savedPurchases);
       setPurchases(parsedPurchases.map((p: any) => ({
         ...p,
@@ -145,7 +154,9 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
   };
 
   const buyItem = (item: Item) => {
+    console.log("[SpendingContext] Attempting to buy item:", item);
     if (remaining < item.price) {
+      console.log("[SpendingContext] Purchase failed: Not enough money");
       toast.error("Not enough money left!");
       return;
     }
@@ -281,6 +292,18 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
     
     toast.success(`Added "${newItem.name}" to your custom items!`);
   };
+
+  if (isLoading) {
+    return <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+    </div>;
+  }
+
+  if (error) {
+    return <div className="flex items-center justify-center min-h-screen text-red-500">
+      {error}
+    </div>;
+  }
 
   return (
     <SpendingContext.Provider
