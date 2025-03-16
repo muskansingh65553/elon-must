@@ -105,7 +105,7 @@ export function ShareSpending() {
           >
             <div className="text-center mb-6">
               <h2 className="text-xl font-bold mb-1">How I Spent Elon's Money</h2>
-              <p className="text-sm opacity-80">spendelonscash.com</p>
+              <p className="text-sm opacity-80">spend-elon-musk-money.online</p>
             </div>
             
             <div className="mb-4">
