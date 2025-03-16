@@ -131,7 +131,7 @@ const items = [
     id: "gaming-pc",
     name: "Ultimate Gaming PC",
     price: 10000,
-    image: "https://images.unsplash.com/photo-1625842268584-8f3296236761?q=80&w=500",
+    image: "/img/gaming-pc.png",
     category: "technology",
     description: "State-of-the-art gaming computer with top-tier components and RGB lighting."
   },
