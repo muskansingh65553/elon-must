@@ -52,8 +52,8 @@ const Index = () => {
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-2 md:gap-3">
-              <CustomBudgetModal />
-              <CustomItemCreator />
+              {/* <CustomBudgetModal />
+              <CustomItemCreator /> */}
               <ShareSpending />
             </div>
           </div>

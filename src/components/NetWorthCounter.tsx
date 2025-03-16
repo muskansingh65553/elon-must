@@ -6,9 +6,8 @@ import confetti from "canvas-confetti";
 import useSound from "use-sound";
 
 export function NetWorthCounter() {
-  const { remaining, spent, customBudget } = useSpending();
+  const { remaining, spent, ELON_NET_WORTH } = useSpending();
   const [isAnimating, setIsAnimating] = useState(false);
-  const totalBudget = customBudget || 335250000000; // Elon's net worth
   const [playCashSound] = useSound('/sounds/cash.mp3', { volume: 0.5 });
   const [playMilestoneSound] = useSound('/sounds/achievement.mp3', { volume: 0.7 });
 
@@ -43,19 +42,19 @@ export function NetWorthCounter() {
     return () => clearTimeout(timer);
   }, [remaining, playCashSound, celebrateMilestone]);
 
-  const spentPercentage = Math.min((spent / totalBudget) * 100, 100);
+  const spentPercentage = Math.min((spent / ELON_NET_WORTH) * 100, 100);
 
   return (
     <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-xl shadow-lg bg-gradient-to-r from-blue-900 to-blue-600 text-white hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
       <div className="text-center">
         <h2 className="text-lg sm:text-xl font-medium mb-1 opacity-90">
-          {customBudget ? "Your Custom Budget" : "Elon Musk's Total Money"}
+          Elon Musk's Total Money
         </h2>
         <div className={`money-counter text-4xl sm:text-5xl font-bold ${isAnimating ? 'animate scale-105 transition-transform' : ''}`}>
           {formatCurrency(remaining)}
         </div>
         <p className="text-xs sm:text-sm mt-1 opacity-80">
-          of {formatCurrency(totalBudget)}
+          of {formatCurrency(ELON_NET_WORTH)}
         </p>
       </div>
 

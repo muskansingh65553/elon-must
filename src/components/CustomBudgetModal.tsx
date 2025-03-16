@@ -83,6 +83,7 @@ export function CustomBudgetModal() {
                 { label: "$1 Billion", value: 1000000000 },
                 { label: "$10 Billion", value: 10000000000 },
                 { label: "$100 Billion", value: 100000000000 },
+                { label: "Full Fortune", value: 335250000000 },
               ].map(option => (
                 <Button
                   key={option.value}

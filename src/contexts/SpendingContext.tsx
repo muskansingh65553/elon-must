@@ -34,8 +34,8 @@ interface SpendingContextType {
   purchases: Purchase[];
   spent: number;
   remaining: number;
-  customBudget: number | null;
-  setCustomBudget: (budget: number | null) => void;
+  ELON_NET_WORTH: number;
+
   buyItem: (item: Item) => void;
   sellItem: (item: Item) => void;
   resetPurchases: () => void;
@@ -54,7 +54,6 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [spent, setSpent] = useState(0);
   const [remaining, setRemaining] = useState(ELON_NET_WORTH);
-  const [customBudget, setCustomBudget] = useState<number | null>(null);
   const [achievementsList, setAchievementsList] = useState<Achievement[]>(achievements);
   const [transactionHistory, setTransactionHistory] = useState<Purchase[]>([]);
   const [funFacts, setFunFacts] = useState<string[]>([]);
@@ -116,25 +115,18 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
       })));
     }
 
-    // Load custom budget if available
-    const savedBudget = localStorage.getItem("customBudget");
-    if (savedBudget) {
-      setCustomBudget(parseFloat(savedBudget));
-      setRemaining(parseFloat(savedBudget));
-    }
+
   }, []);
 
   // Save purchases to localStorage when they change
   useEffect(() => {
     localStorage.setItem("purchases", JSON.stringify(purchases));
     localStorage.setItem("transactionHistory", JSON.stringify(transactionHistory));
-    if (customBudget !== null) {
-      localStorage.setItem("customBudget", customBudget.toString());
-    }
+
 
     // Check for achievements
     checkAchievements();
-  }, [purchases, customBudget]);
+  }, [purchases]);
 
   const checkAchievements = () => {
     const updatedAchievements = achievementsList.map(achievement => {
@@ -181,7 +173,7 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
 
     // Update spent and remaining
     const newSpent = spent + item.price;
-    const newRemaining = (customBudget || ELON_NET_WORTH) - newSpent;
+    const newRemaining = ELON_NET_WORTH - newSpent;
     
     setSpent(newSpent);
     setRemaining(newRemaining);
@@ -237,7 +229,7 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
     
     // Update spent and remaining
     const newSpent = spent - item.price;
-    const newRemaining = (customBudget || ELON_NET_WORTH) - newSpent;
+    const newRemaining = ELON_NET_WORTH - newSpent;
     
     setSpent(newSpent);
     setRemaining(newRemaining);
@@ -250,7 +242,7 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
   const resetPurchases = () => {
     setPurchases([]);
     setSpent(0);
-    setRemaining(customBudget || ELON_NET_WORTH);
+    setRemaining(ELON_NET_WORTH);
     setAchievementsList(achievements.map(a => ({ ...a, unlocked: false })));
     setTransactionHistory([]);
     setFunFacts([]);
@@ -312,8 +304,8 @@ export const SpendingProvider = ({ children }: { children: React.ReactNode }) =>
         purchases,
         spent,
         remaining,
-        customBudget,
-        setCustomBudget,
+        ELON_NET_WORTH,
+
         buyItem,
         sellItem,
         resetPurchases,
