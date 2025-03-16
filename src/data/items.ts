@@ -123,7 +123,7 @@ const items = [
     id: "charity-donation",
     name: "Feed 1 Million People",
     price: 5000000,
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbafc3efd?q=80&w=500",
+    image: "/img/hungry.png",
     category: "charity",
     description: "Provide meals for 1 million hungry people across the world."
   },
